@@ -14,4 +14,18 @@ fn main() {
 	let server = TcpListener::bind(LOCAL).expect("Listener failed to bind");
 	server.set_nonblocking(true).expect("failed to initialize non-blocking");
     
+    let mut client = vec![];
+    let (tx, rx) = mpsc::channel::<String>();
+
+    loop {
+        if let Ok((mut socket, addr)) = server.accept() {
+
+            println!("Client {} connected", addr);
+
+            let tx = tx.clone();
+
+            client.push(socket.try_clone().expect("Failed to clone client"));
+
+        }
+    }
 }
