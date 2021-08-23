@@ -1,4 +1,4 @@
-//Kinesys Rust Tcp chat Server
+//Nephael Rust Tcp chat Server
 
 use std::io::{Errorkind, Read, Write}
 use std::net::TcpListener;
